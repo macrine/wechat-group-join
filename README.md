@@ -1,2 +1,2 @@
 # wechat-group-join
-微信加群
+微信加群.
