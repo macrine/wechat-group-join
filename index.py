@@ -46,7 +46,8 @@ def start():
 
         scanFlow()
         # 休眠0.5小时到2小时
-        sleepTime = random.randint(60, 120);
+        sleepTime = random.randint(20, 40)
+        print('sleepTime:%s' % sleepTime)
         time.sleep(sleepTime)
 
 
