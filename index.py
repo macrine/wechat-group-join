@@ -30,6 +30,7 @@ def scanFlow():
 
 
 def start():
+    startTime = time.time()
     # while True:
     #     spiderFlow()
     #     time.sleep(360)
@@ -39,9 +40,14 @@ def start():
     while True:
         # spiderFlow()
         # time.sleep(360)
+        if time.time() > startTime + 3600:
+            startTime = time.time()
+            spiderFlow()
+
         scanFlow()
         # 休眠0.5小时到2小时
-        time.sleep(random.randint(60, 600))
+        sleepTime = random.randint(60, 120);
+        time.sleep(sleepTime)
 
 
 start()

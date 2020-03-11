@@ -17,10 +17,10 @@ def openScreen():
         return False
     print('已连接手机')
     os.system('adb shell input swipe 500 2000 500 1500  300')
-    os.system('adb shell input keyevent 16')
-    os.system('adb shell input keyevent 11')
-    os.system('adb shell input keyevent 15')
     os.system('adb shell input keyevent 10')
+    os.system('adb shell input keyevent 11')
+    os.system('adb shell input keyevent 7')
+    os.system('adb shell input keyevent 8')
     print('解锁屏幕')
 
 
