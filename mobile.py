@@ -89,6 +89,8 @@ def openWeiXin(img):
     time.sleep(2)
 
     # 点击加好友按钮
+    os.system('adb shell input tap 500 920')
+    time.sleep(1)
     os.system('adb shell input tap 500 720')
     time.sleep(3)
 
