@@ -1,4 +1,4 @@
-#!E:\thq\project_test\ppp\venv\Scripts\python.exe
+#!D:\wechat-group-join\venv\Scripts\python.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'pip==19.0.3','console_scripts','pip3.8'
 __requires__ = 'pip==19.0.3'
 import re
