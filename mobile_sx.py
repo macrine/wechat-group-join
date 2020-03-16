@@ -1,3 +1,4 @@
+# 三星手机
 import os
 import time
 import spider
@@ -12,16 +13,11 @@ def lockScreen():
 # 解锁屏幕
 def openScreen():
     # 82菜单键
-    z = os.system('adb shell input keyevent 82')
+    z = os.system('adb shell input keyevent 3')
     if z == 1:
         print('未连接手机')
         return False
     print('已连接手机')
-    os.system('adb shell input swipe 500 2000 500 1500  300')
-    os.system('adb shell input keyevent 10')
-    os.system('adb shell input keyevent 11')
-    os.system('adb shell input keyevent 7')
-    os.system('adb shell input keyevent 8')
     print('解锁屏幕')
 
 
@@ -41,12 +37,12 @@ def sendFileToMobile():
         img = images[0]
         print(os.path.join(images_path, img))
         img_path = os.path.join(images_path, img)
-        result = os.system('adb push %s /storage/sdcard0/DCIM/Screenshots/' % img_path)
+        result = os.system('adb push %s /storage/sdcard0/DCIM/Camera/' % img_path)
         if result == 0:
             time.sleep(3)
             # 刷新相册
             os.system(
-                'adb shell am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/DCIM/Screenshots/%s' % img)
+                'adb shell am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/DCIM/Camera/%s' % img)
 
             # 删除电脑上的文件
             os.remove(img_path)
@@ -82,7 +78,7 @@ def openWeiXin(img):
     time.sleep(2)
 
     # 打开相册
-    os.system('adb shell input tap 900 2000')
+    os.system('adb shell input tap 900 1520')
     time.sleep(2)
 
     # 选择一张照片
