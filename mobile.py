@@ -1,6 +1,5 @@
 import os
 import time
-import spider
 
 
 # 锁屏
@@ -11,13 +10,16 @@ def lockScreen():
 
 # 解锁屏幕
 def openScreen():
-    # 82菜单键
+    # 82菜单键 唤醒屏幕
     z = os.system('adb shell input keyevent 82')
     if z == 1:
         print('未连接手机')
         return False
     print('已连接手机')
+
+    # 滑动一次 打开输入密码界面
     os.system('adb shell input swipe 500 2000 500 1500  300')
+    # 输入密码 3401
     os.system('adb shell input keyevent 10')
     os.system('adb shell input keyevent 11')
     os.system('adb shell input keyevent 7')
@@ -58,18 +60,16 @@ def sendFileToMobile():
         lockScreen()
 
 
-# 删除文件
-# adb shell rm /storage/sdcard0/DCIM/Screenshots/3a345242ad4bd113dea4374d4dafa40f4afb0583.jpg
-
-
 def openWeiXin(img):
+    # 打开微信
     os.system('adb shell am start com.tencent.mm/com.tencent.mm.ui.LauncherUI')
     time.sleep(1)
-    # 4返回键 保证微信界面在首页
+    # 按返回键两次 保证微信界面在首页
     os.system('adb shell input keyevent 4')
     time.sleep(1)
     os.system('adb shell input keyevent 4')
     time.sleep(1)
+    # 再次打开微信
     os.system('adb shell am start com.tencent.mm/com.tencent.mm.ui.LauncherUI')
     time.sleep(1)
 
@@ -77,15 +77,15 @@ def openWeiXin(img):
     os.system('adb shell input keyevent 82')
     time.sleep(2)
 
-    # 打开扫一扫
+    # 点击扫一扫按钮
     os.system('adb shell input tap 900 600')
     time.sleep(2)
 
-    # 打开相册
+    # 选择相册
     os.system('adb shell input tap 900 2000')
     time.sleep(2)
 
-    # 选择一张照片
+    # 选择第一张照片
     os.system('adb shell input tap 400 300')
     time.sleep(2)
 
@@ -93,7 +93,7 @@ def openWeiXin(img):
     os.system('adb shell input tap 500 1060')
     time.sleep(2)
 
-    # 点击加好友按钮
+    # 有可能是个人二维码，点击加好友按钮，按钮位置可能有两种情况
     os.system('adb shell input tap 500 920')
     time.sleep(1)
     os.system('adb shell input tap 500 720')
@@ -103,6 +103,7 @@ def openWeiXin(img):
     os.system('adb shell input tap 950 150')
     time.sleep(2)
 
+    # 返回
     os.system('adb shell input keyevent 4')
     time.sleep(1)
     os.system('adb shell input keyevent 4')
@@ -113,4 +114,5 @@ def openWeiXin(img):
     os.system('adb shell rm /storage/sdcard0/DCIM/Screenshots/%s' % img)
     time.sleep(3)
 
+    # 锁屏 结束
     lockScreen()
